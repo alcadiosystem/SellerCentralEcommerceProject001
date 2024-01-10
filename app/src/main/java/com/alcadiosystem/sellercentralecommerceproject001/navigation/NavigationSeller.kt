@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.home.HomeScreen
+import com.alcadiosystem.sellercentralecommerceproject001.presentation.profile.ProfileScreen
 
 @Composable
 fun NavigationSeller(
@@ -14,6 +15,9 @@ fun NavigationSeller(
     NavHost(navController = navController, startDestination = NavScreen.Home.route){
         composable(NavScreen.Home.route){
             HomeScreen(navController = navController)
+        }
+        composable(NavScreen.Profile.route){
+            ProfileScreen(navController)
         }
     }
 

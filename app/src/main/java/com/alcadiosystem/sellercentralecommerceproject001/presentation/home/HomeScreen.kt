@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
@@ -20,21 +20,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Analytics
-import androidx.compose.material.icons.outlined.CreditCard
 import androidx.compose.material.icons.outlined.DataExploration
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Outbox
 import androidx.compose.material.icons.outlined.People
-import androidx.compose.material.icons.outlined.PersonOutline
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,15 +36,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.alcadiosystem.sellercentralecommerceproject001.R
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.core.component.BottomBarNav
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.colorAccent
-import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.iconColorUnselected
-import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.iconSelected
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.textColor
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.textSubtitle
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.titleColor
@@ -108,18 +97,20 @@ fun HomeScreen(navController: NavHostController) {
                     )
 
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 5.dp)
-                    ) {
-                        CardItemDashboard(0, Modifier.weight(1f))
-                        CardItemDashboard(1, Modifier.weight(1f))
-                    }
-                    Row(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardItemDashboard(2, Modifier.weight(1f))
-                        CardItemDashboard(3, Modifier.weight(1f))
+                        Column(
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            CardItemDashboard(0, Modifier.height(220.dp).width(160.dp))
+                            CardItemDashboard(2, Modifier.height(180.dp).width(160.dp))
+                        }
+                        Column(
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            CardItemDashboard(1, Modifier.height(180.dp).width(160.dp))
+                            CardItemDashboard(3, Modifier.height(220.dp).width(160.dp))
+                        }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -219,7 +210,6 @@ fun CardItemDashboard(position: Int, modifier: Modifier = Modifier) {
 
     Card(
         modifier
-            .height(180.dp)
             .padding(vertical = 10.dp, horizontal = 5.dp),
         colors = CardDefaults.cardColors(
             containerColor = if(position==1) colorAccent else whiteColor

@@ -20,6 +20,7 @@ val titleColor = Color(0xFF2E2D3F)
 val textSubtitle = Color(0xFFB0B0B0)
 val iconColorUnselected = Color(0xFF8D8D8D)
 val iconSelected = Color(0xFF272821)
+val blueHighlight = Color(0xFF1098E2)
 
 val greenData = Color(0xFF004751)
 

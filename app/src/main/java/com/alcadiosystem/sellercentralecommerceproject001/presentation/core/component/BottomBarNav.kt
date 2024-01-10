@@ -44,7 +44,9 @@ fun BottomBarNav(navController: NavHostController) {
             NavigationBarItem(
                 modifier = Modifier.size(450.dp),
                 selected = isSelected,
-                onClick = {},
+                onClick = {
+                    navController.navigate(item.route)
+                },
                 icon = {
                     Icon(
                         imageVector = item.icon,
