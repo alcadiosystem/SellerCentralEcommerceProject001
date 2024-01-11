@@ -6,5 +6,6 @@ sealed class NavScreen(val route:String) {
     data object Expense:NavScreen("expense")
     data object Sales:NavScreen("sales")
     data object Profile:NavScreen("profile")
+    data object Search:NavScreen("search")
 
 }

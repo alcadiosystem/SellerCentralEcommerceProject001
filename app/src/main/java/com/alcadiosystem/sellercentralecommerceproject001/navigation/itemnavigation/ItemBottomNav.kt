@@ -22,12 +22,12 @@ sealed class ItemBottomNav(
     data object ItemBottomNavCredit:ItemBottomNav(
         icon = Icons.Outlined.CreditCard,
         title = "",
-        route = NavScreen.Expense.route
+        route = NavScreen.Sales.route
     )
     data object ItemBottomNavSearch:ItemBottomNav(
         icon = Icons.Outlined.Search,
         title = "",
-        route = NavScreen.Sales.route
+        route = NavScreen.Search.route
     )
     data object ItemBottomNavProfile:ItemBottomNav(
         icon = Icons.Outlined.PersonOutline,

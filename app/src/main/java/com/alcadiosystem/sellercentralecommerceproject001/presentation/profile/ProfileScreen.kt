@@ -41,6 +41,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.alcadiosystem.sellercentralecommerceproject001.R
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.core.component.BottomBarNav
+import com.alcadiosystem.sellercentralecommerceproject001.presentation.core.component.CardElementInfo
+import com.alcadiosystem.sellercentralecommerceproject001.presentation.core.component.CardInvestment
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.background
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.blueHighlight
 import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.iconColorUnselected
@@ -51,6 +53,13 @@ import com.alcadiosystem.sellercentralecommerceproject001.presentation.ui.theme.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+
+    val companyNames = listOf(
+        "Tu estafita S.A",
+        "SCS S.Coop",
+        "Robandito S.C",
+        "La mentirita E.U"
+    )
 
     Scaffold(
         topBar = {
@@ -115,103 +124,17 @@ fun ProfileScreen(navController: NavHostController) {
             }
             Spacer(modifier = Modifier.height(10.dp))
 
-            CardElementProfile("Notificiation", Icons.Outlined.Notifications)
+            CardElementInfo("Notificiation", Icons.Outlined.Notifications)
 
-            CardElementProfile("umbox@um.com", Icons.Outlined.Email)
+            CardElementInfo("umbox@um.com", Icons.Outlined.Email)
 
-            CardElementProfile("Contact Us", Icons.Outlined.Phone)
+            CardElementInfo("Contact Us", Icons.Outlined.Phone)
 
             for (i in 0..3) {
-                CardInvestment(i)
+                CardInvestment(name = companyNames[i])
             }
 
         }
     }
 
 }
-
-@Composable
-fun CardInvestment(i: Int) {
-
-    val companyNames = listOf(
-        "Tu estafita S.A",
-        "SCS S.Coop",
-        "Robandito S.C",
-        "La mentirita E.U"
-    )
-
-    Card(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = whiteColor
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 5.dp, vertical = 16.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                modifier = Modifier
-                    .size(70.dp)
-                    .clip(CircleShape),
-                painter = painterResource(id = R.drawable.buildings),
-                contentDescription = "Empresita",
-                contentScale = ContentScale.Crop
-            )
-            Column(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxHeight()
-                    .weight(1f),
-                verticalArrangement = Arrangement.Center,
-            ) {
-                Text(
-                    text = companyNames[i],
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor
-                )
-                Text(text = "Since lasat week", fontSize = 13.sp, color = textSubtitle)
-            }
-
-            Text(
-                modifier = Modifier.weight(0.5f),
-                text = "$55.12",
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                color = textColor
-            )
-        }
-    }
-}
-
-@Composable
-fun CardElementProfile(text: String, icon: ImageVector) {
-    Card(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 5.dp)
-            .fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = whiteColor
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = "Notificiations",
-                tint = iconColorUnselected,
-                modifier = Modifier.padding(end = 10.dp)
-            )
-            Text(text = text, color = textSubtitle, fontSize = 16.sp)
-        }
-    }
-}
-
